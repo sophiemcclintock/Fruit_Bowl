@@ -7,6 +7,15 @@ def print_fruit(L):
         output = "Amy has {} {}".format(x[1], x[0])
         print(output)
 
+def add_fruit(l):
+   print_fruit_with_indexes(l)
+   choice = get_integer("Please enter the index number of the fruit you would like to add to -> ")
+   quantity = get_integer("How many {} would you like to add? -> ".format(l[choice][0]))
+   l[choice][1] += quantity
+   confirmation = "You now have {} {}".format(l[choice][1], l[choice][0])
+   print(confirmation)
+
+
 def menu():
     fruit_list = [['Apples', '5'],
                   ['Pears', '2'],
@@ -15,6 +24,7 @@ def menu():
                   ['Peaches', '3']]
     my_menu = '''
     R : Review
+    A : Add
     Q : Quit
     '''
     run = True
@@ -23,6 +33,8 @@ def menu():
         user_choice = get_string("Please enter your choice -> ")
         if user_choice == "R":
             print_fruit(fruit_list)
+        elif user_choice == "A":
+            add_fruit(fruit_list)
         elif user_choice == "Q":
             run = False
             print("Thanks for looking through my program")
